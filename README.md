@@ -11,15 +11,18 @@
 
 ## Install
 
+NOTE: not working
 
 ```fish
 $ omf install ruficu
 ```
 
+
 ## Features
 
-* Lorem ipsum dolor sit amet.
-* Consectetur adipisicing elit.
+* Forked from default theme
+* Allows logo customitzation via $theme_prompt_logo in config.fish
+* Allows hostname display and customitzation via $theme_hostname in config.fish
 
 ## Screenshot
 

@@ -2,6 +2,7 @@
 #
 #  set -g theme_short_path yes
 #  set -g theme_hostname (hostname | cut -d . -f 1)
+#  set -g theme_prompt_logo \U1F420 " " # Tropical fish
 
 function fish_prompt
   set -l last_command_status $status
@@ -13,13 +14,11 @@ function fish_prompt
     set cwd (prompt_pwd)
   end
 
-  # set -l fish     "⋊>"
-  # set -l fish \u16A0  # Gandalf
-  # set -l fish \U1F420 " " # Tropical fish
-  set -l fish \U1F365 " "  # Fish cake
-  # set -l fish \U1D122  # Music
-  # set -l fish \U2F54  # Water Kanji
-  # set -l fish \u0AD0 " "  # Om
+  if not test -n "$theme_prompt_logo"
+    set -g theme_prompt_logo "⋊>"
+  end
+
+  set -l fish $theme_prompt_logo
 
   set -l ahead    "↑"
   set -l behind   "↓"
@@ -39,7 +38,9 @@ function fish_prompt
     echo -n -s $error_color $fish $normal_color
   end
 
-  echo -n -s " $theme_hostname"
+  if test -n "$theme_hostname"
+    echo -n -s " $theme_hostname"
+  end
 
   if git_is_repo
     if test "$theme_short_path" = 'yes'
