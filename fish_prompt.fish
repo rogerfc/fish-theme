@@ -13,7 +13,14 @@ function fish_prompt
     set cwd (prompt_pwd)
   end
 
-  set -l fish     "⋊>"
+  # set -l fish     "⋊>"
+  # set -l fish \u16A0  # Gandalf
+  # set -l fish \U1F420 " " # Tropical fish
+  set -l fish \U1F365 " "  # Fish cake
+  # set -l fish \U1D122  # Music
+  # set -l fish \U2F54  # Water Kanji
+  # set -l fish \u0AD0 " "  # Om
+
   set -l ahead    "↑"
   set -l behind   "↓"
   set -l diverged "⥄ "
