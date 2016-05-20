@@ -14,7 +14,7 @@ function fish_prompt
     set cwd (prompt_pwd)
   end
 
-  if not test -n "$theme_prompt_logo"
+  if not set -q theme_prompt_logo
     set -g theme_prompt_logo "⋊>"
   end
 
@@ -38,7 +38,7 @@ function fish_prompt
     echo -n -s $error_color $fish $normal_color
   end
 
-  if test -n "$theme_hostname"
+  if set -q theme_hostname
     echo -n -s " $theme_hostname"
   end
 
