@@ -1,3 +1,7 @@
 function fish_title
-# Customize the title bar of the terminal window.
+    if [ $_ = 'fish' ]
+        echo (prompt_pwd)
+    else
+        echo $_
+    end
 end
