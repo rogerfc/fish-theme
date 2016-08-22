@@ -26,9 +26,9 @@ function fish_prompt
   set -l directory_color  (set_color $fish_color_quote ^/dev/null; or set_color brown)
   set -l repository_color (set_color $fish_color_cwd ^/dev/null; or set_color green)
 
-  set -l vcs_name_color   (set_color $directory_color ^/dev/null; or set_color brown)
-  set -l vcs_dirty_color  (set_color $directory_color ^/dev/null; or set_color brown)
-  set -l vcs_branch_color (set_color $directory_color ^/dev/null; or set_color brown)
+  set -l vcs_name_color   (set_color $fish_color_command ^/dev/null; or set_color cyan)
+  set -l vcs_branch_color (set_color $fish_color_param ^/dev/null; or set_color brown)
+  set -l vcs_dirty_color  (set_color $fish_color_error ^/dev/null; or set_color brown)
 
   set -l vcs_dirty_char '+'
 
@@ -40,7 +40,7 @@ function fish_prompt
 
   __get_vcs
   if test $vcs_type
-    echo -n -s " " $repository_color $vcs_type ":" $vcs_branch_color $vcs_branch
+    echo -n -s " " $vcs_name_color $vcs_type ":" $vcs_branch_color $vcs_branch
     if test -n "$vcs_dirty"
       echo -n -s $vcs_dirty_color $vcs_dirty_char
     end
@@ -51,7 +51,14 @@ function fish_prompt
     echo -n -s " $theme_hostname"
   end
 
-  echo -n -s " " $directory_color $cwd $normal_color
+  echo -n -s " " $directory_color $cwd
+
+  if test $last_command_status -eq 0
+    echo -n -s " " $success_color "❯" $normal_color
+  else
+    echo -n -s " " $error_color "❯" $normal_color
+  end
+
   echo -n -s " "
 end
 
