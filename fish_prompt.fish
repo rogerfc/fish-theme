@@ -54,9 +54,9 @@ function fish_prompt
   echo -n -s " " $directory_color $cwd
 
   if test $last_command_status -eq 0
-    echo -n -s " " $success_color "❯" $normal_color
+    echo -n -s " " $success_color "\$" $normal_color
   else
-    echo -n -s " " $error_color "❯" $normal_color
+    echo -n -s " " $error_color "\$" $normal_color
   end
 
   echo -n -s " "
